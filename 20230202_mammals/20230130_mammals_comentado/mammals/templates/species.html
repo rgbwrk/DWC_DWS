@@ -1,0 +1,99 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Surveys for Species: "{{ species.name }}"</h1>
+
+<table width="100%">
+  <tbody>
+    <tr>
+      <td class="align-top" width="50%">
+        <!--  formulario para actualizar cada campo de una especie-->
+        <!--  action dice adónde se va a enviar los datos del formulario al hacer submit-->
+        <form      
+          class="species-form"
+          action="/species/{{ species.uid }}" 
+          method="post"
+        >
+          <label for="genus_input">Genus</label>
+          <input
+            type="text"
+            name="genus"
+            id="genus_input"
+            value="{{ species.genus }}"
+          /><br />
+
+          <label for="taxa_input">Taxa</label>
+          <input
+            type="text"
+            name="taxa"
+            id="taxa_input"
+            value="{{ species.taxa }}"
+          /><br />
+
+          <label for="name_input">Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name_input"
+            value="{{ species.name }}"
+          /><br />
+
+          <br />
+          <input type="submit" value="Actualizar" />  <!--  si está dentro de un formulario este es el botón input type="submit"  Actualizar es la etiqueta que aparece en la página web-->
+        </form>
+        <br />
+        <form action="/species/{{ species.uid }}/delete" method="post">
+          <input type="submit" value="Borrar" />
+        </form>
+      </td>
+
+      <td width="50%">
+        <p>
+          {% for page in pages %} {% if page == species.page %}
+          <a
+            href="/species/{{ species.uid }}?page={{ page }}"
+            class="current-page"
+            ><strong>{{ page }}</strong></a
+          >
+          {% else %}
+          <a href="/species/{{ species.uid }}?page={{ page }}">{{ page }}</a>
+          {% endif %} {% endfor %}
+        </p>
+        <!--  la tabla de la derecha-->
+        <table id="species-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Date</th>
+              <th>Hindfoot Length</th>
+              <th>Weight</th>
+              <th>Sex</th>
+              <th></th>
+            </tr>
+          </thead>
+          <!-- La tabla de la derecha, donde están los resultados de cada survey  -->
+          <tbody>
+            {% for s in surveys %}
+            <tr>
+              <td>{{ s.uid }}</td>
+              <td>{{ s.day }}/{{ s.month }}/{{ s.year }}</td>
+              <td>{{ s.hindfoot_length }}</td>
+              <td>{{ s.weight }}</td>
+              <td>{{ s.sex }}</td>
+              <td>
+                <a
+                  title="Borrar Survey"
+                  class="delete-btn"
+                  href="/species/{{ species.uid }}/surveys/{{ s.uid }}/delete"
+                >
+                🗑
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+{% endblock %}

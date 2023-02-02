@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Delete Contact - {{ contact.fullname }}</h1>
+<a href="/">Back</a><br /><br />
+
+<p>Are you sure?</p>
+<form action="/delete/{{ contact.uid }}" method="post">
+  <input type="submit" value="Delete" />
+</form>
+{% endblock %}

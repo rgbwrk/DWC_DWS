@@ -1,0 +1,59 @@
+html {
+  background: #cccccc;
+}
+
+.campo {
+  text-align: right;
+}
+
+.fila-boton {
+  text-align: right;
+  padding-top: 1rem;
+}
+
+.error {
+  border-color: red;
+}
+
+tr {
+  padding-bottom: 10px !important;
+}
+
+#createForm {
+  border: solid 1px #4f4f4f;
+  width: 300px;
+  padding: 0.7rem;
+}
+
+#species-table {
+  border: solid 1px black;
+  border-collapse: collapse;
+}
+
+#species-table th {
+  border: solid 1px black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#species-table td {
+  border: solid 1px black;
+}
+
+.delete-btn {
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.current-page {
+  color: red;
+  text-decoration: none; /* Quitar subrayado de los links */
+}
+
+.align-top {
+  vertical-align: top;
+}
+
+.species-form {
+  margin-top: 50px;
+}

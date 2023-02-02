@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Add Contact</h1>
+<a href="/">Back</a><br /><br />
+
+<form id="createForm" action="/create" method="post">
+  <table>
+    <tbody>
+      <tr>
+        <td class="campo">
+          <label for="nick_input">Nickname</label>
+        </td>
+        <td>
+          <input type="text" name="nick" id="nick_input" />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="campo">
+          <label for="first_name_input">First Name</label>
+        </td>
+        <td>
+          <input type="text" name="first_name" id="first_name_input" />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="campo">
+          <label for="last_name_input">Last Name</label>
+        </td>
+        <td>
+          <input type="text" name="last_name" id="last_name_input" />
+        </td>
+      </tr>
+
+      <tr>
+        <td class="campo">
+          <label for="phone_input">Phone</label>
+        </td>
+        <td>
+          <input type="tel" name="phone" id="phone_input" />
+        </td>
+      </tr>
+
+      <tr>
+          <td class="fila-boton" colspan="2">
+          <button id="submitButton">Add</button>
+        </td>
+      </tr>
+    </tbody>
+    </tbody>
+  </table>
+
+</form>
+
+<!-- Botón fuera del formulario -->
+
+<button id="clearButton">Clear</button>
+<button id="hideButton">Hide</button>
+<button id="showButton">Show</button>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='validation.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Species List</h1>
+
+<ul>
+  <!-- La página index ha sido lanzada por flask desde las vistas -->
+  <!-- "index.html", species=species, pages=[i + 1 for i in range(total_pages)]  -->
+  <!--  Se le han pasado como parámetros las species, obtenidas de la BD y el listado de páginas (ver en views.py)-->
+  <p>  <!-- Párrafo -->
+    {% for page in pages %} {% if page == species.page %}
+    <!-- En negritas la página actual-->
+    <a href="/?page={{ page }}" class="current-page"
+      ><strong>{{ page }}</strong></a
+    >
+    {% else %}
+    <!-- En letra normal el resto de las páginas -->
+    <a href="/?page={{ page }}">{{ page }}</a>
+    {% endif %} {% endfor %}
+  </p>
+
+  {% for sp in species.items %}
+  <li><a href="/species/{{ sp.uid }}">{{ sp.name }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}
